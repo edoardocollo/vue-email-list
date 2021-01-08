@@ -12,8 +12,8 @@
 <body>
 
   <div id="app">
-    <div class="cell" v-for="(number,i) in numbers" @click="show(i)">
-      <span v-if="number.visible" v-bind:class="number.color" class="cell_content">
+    <div class="cell" v-for="(number,i) in numbers" @click="getNumber(i)">
+      <span  v-bind:class="number.color" class="cell_content">
         {{number.value}}
       </span>
     </div>

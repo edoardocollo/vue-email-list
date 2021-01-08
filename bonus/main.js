@@ -2,36 +2,36 @@ let app = new Vue({
   el: '#app',
   data: {
     numbers: [],
+    saluto:'',
   },
   methods: {
-    getCellsNumber: function(number) {
+    createCell: function(number) {
       for (var i = 0; i < number; i++) {
-        axios.get('https://flynn.boolean.careers/exercises/api/random/int')
-          .then(resp => {
-            console.log(resp.data.response);
-            let color = ''
-            if (resp.data.response <= 5) {
-              color = 'yellow';
-            }else{
-              color = 'green'
-            }
-            app.numbers.push({
-              value:resp.data.response,
-              visible: false,
-              color: color,
-            });
-          })
+        this.numbers.push({
+          value:'',
+          color:'',
+        });
       }
 
     },
-    show: function(index){
-      console.log(index);
-      app.numbers[index].visible=true;
-    }
+    getNumber: function(index){
+      axios.get('https://flynn.boolean.careers/exercises/api/random/int')
+        .then(resp => {
+          const number = resp.data.response;
+          console.log(number);
+          this.numbers[index].value = number;
+          if (number<= 5) {
+            this.numbers[index].color = 'yellow';
+          }else{
+            this.numbers[index].color = 'green';
+          }
+        })
+
+    },
   },
   mounted() {
     const numberOfCell = 36;
-    this.getCellsNumber(numberOfCell);
+    this.createCell(numberOfCell);
 
   },
 });
