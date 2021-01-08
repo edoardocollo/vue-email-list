@@ -9,12 +9,25 @@ let app = new Vue({
         axios.get('https://flynn.boolean.careers/exercises/api/random/int')
           .then(resp => {
             console.log(resp.data.response);
-            app.numbers.push(resp.data.response);
+            let color = ''
+            if (resp.data.response <= 5) {
+              color = 'yellow';
+            }else{
+              color = 'green'
+            }
+            app.numbers.push({
+              value:resp.data.response,
+              visible: false,
+              color: color,
+            });
           })
       }
 
     },
-
+    show: function(index){
+      console.log(index);
+      app.numbers[index].visible=true;
+    }
   },
   mounted() {
     const numberOfCell = 36;

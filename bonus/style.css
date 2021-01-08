@@ -15,10 +15,21 @@ body {
   flex-wrap: wrap;
 }
 .cell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 150px;
   height: 150px;
   border: 1px solid black;
+}
+.yellow {
+  background-color: yellow;
+}
+.green {
+  background-color: green;
+}
+.cell_content {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
